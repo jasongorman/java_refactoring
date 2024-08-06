@@ -23,22 +23,7 @@ public class Rover {
         instructions.chars().forEach((instruction) -> {
             if(instruction == 'R'){
 
-                if(facing == "N") {
-                    facing = "E";
-                    return;
-                }
-
-                if(facing == "E") {
-                    facing = "S";
-                    return;
-                }
-
-                if(facing == "S") {
-                    facing = "W";
-                    return;
-                }
-
-                facing = "N";
+                if (turnRight()) return;
             }
 
             if(instruction == 'L') {
@@ -96,5 +81,25 @@ public class Rover {
                 }
             }
         });
+    }
+
+    private boolean turnRight() {
+        if(facing == "N") {
+            facing = "E";
+            return true;
+        }
+
+        if(facing == "E") {
+            facing = "S";
+            return true;
+        }
+
+        if(facing == "S") {
+            facing = "W";
+            return true;
+        }
+
+        facing = "N";
+        return false;
     }
 }
