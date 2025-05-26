@@ -1,9 +1,9 @@
 package com.codemanship.marsrover;
 
-import java.util.Arrays;
+import java.util.Objects;
 
 public class Rover {
-    private int[] position;
+    private final int[] position;
     private String facing;
 
     public Rover(String facing, int x, int y) {
@@ -23,21 +23,36 @@ public class Rover {
         instructions.chars().forEach((instruction) -> {
             if(instruction == 'R'){
 
-                if (turnRight()) return;
-            }
-
-            if(instruction == 'L') {
-                if (facing == "N") {
-                    facing = "W";
+                if(facing.equals( "N")) {
+                    facing = "E";
                     return;
                 }
 
-                if (facing == "W") {
+                if(facing.equals( "E")) {
                     facing = "S";
                     return;
                 }
 
-                if (facing == "S") {
+                if(facing.equals( "S")) {
+                    facing = "W";
+                    return;
+                }
+
+                facing = "N";
+            }
+
+            if(instruction == 'L') {
+                if (facing.equals("N")) {
+                    facing = "W";
+                    return;
+                }
+
+                if (facing.equals("W")) {
+                    facing = "S";
+                    return;
+                }
+
+                if (facing.equals("S")) {
                     facing = "E";
                     return;
                 }
@@ -46,60 +61,41 @@ public class Rover {
             }
 
             if(instruction == 'F'){
-                if(facing == "N") {
+                if(facing.equals( "N")) {
                     position[1] = position[1] + 1;
                 }
 
-                if(facing == "E"){
+                if(facing.equals( "E")){
                     position[0] = position[0] + 1;
                 }
 
-                if(facing == "S"){
+                if(facing.equals( "S")){
                     position[1] = position[1] - 1;
                 }
 
-                if(facing == "W"){
+                if(facing.equals( "W")){
                     position[0] = position[0] - 1;
                 }
             }
 
             if(instruction == 'B'){
-                if(facing == "N") {
+                if(facing.equals( "N")) {
                     position[1] = position[1] - 1;
                 }
 
-                if(facing == "E"){
+                if(facing.equals( "E")){
                     position[0] = position[0] - 1;
                 }
 
-                if(facing == "S"){
+                if(facing.equals( "S")){
                     position[1] = position[1] + 1;
                 }
 
-                if(facing == "W"){
+                if(facing.equals( "W")){
                     position[0] = position[0] + 1;
                 }
             }
         });
     }
 
-    private boolean turnRight() {
-        if(facing == "N") {
-            facing = "E";
-            return true;
-        }
-
-        if(facing == "E") {
-            facing = "S";
-            return true;
-        }
-
-        if(facing == "S") {
-            facing = "W";
-            return true;
-        }
-
-        facing = "N";
-        return false;
-    }
 }

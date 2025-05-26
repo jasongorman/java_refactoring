@@ -63,28 +63,28 @@ public class RoverTest {
     }
 
     @Test
-    public void moveFowardFacingN(){
+    public void moveForwardFacingN(){
         Rover rover = new Rover("N", 5, 5);
         rover.go("F");
         assertArrayEquals(new int[]{5, 6}, rover.getPosition());
     }
 
     @Test
-    public void moveFowardFacingE(){
+    public void moveForwardFacingE(){
         Rover rover = new Rover("E", 5, 5);
         rover.go("F");
         assertArrayEquals(new int[]{6, 5}, rover.getPosition());
     }
 
     @Test
-    public void moveFowardFacingS(){
+    public void moveForwardFacingS(){
         Rover rover = new Rover("S", 5, 5);
         rover.go("F");
         assertArrayEquals(new int[]{5, 4}, rover.getPosition());
     }
 
     @Test
-    public void moveFowardFacingW(){
+    public void moveForwardFacingW(){
         Rover rover = new Rover("W", 5, 5);
         rover.go("F");
         assertArrayEquals(new int[]{4, 5}, rover.getPosition());
