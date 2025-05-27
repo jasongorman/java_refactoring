@@ -21,23 +21,7 @@ public class Rover {
     public void execute(String instructions) {
         instructions.chars().forEach((instruction) -> {
             if(instruction == RIGHT){
-
-                if(facing.equals( "N")) {
-                    facing = "E";
-                    return;
-                }
-
-                if(facing.equals( "E")) {
-                    facing = "S";
-                    return;
-                }
-
-                if(facing.equals( "S")) {
-                    facing = "W";
-                    return;
-                }
-
-                facing = "N";
+                if (turnRight()) return;
             }
 
             if(instruction == 'L') {
@@ -95,6 +79,26 @@ public class Rover {
                 }
             }
         });
+    }
+
+    private boolean turnRight() {
+        if(facing.equals( "N")) {
+            facing = "E";
+            return true;
+        }
+
+        if(facing.equals( "E")) {
+            facing = "S";
+            return true;
+        }
+
+        if(facing.equals( "S")) {
+            facing = "W";
+            return true;
+        }
+
+        facing = "N";
+        return false;
     }
 
 }
