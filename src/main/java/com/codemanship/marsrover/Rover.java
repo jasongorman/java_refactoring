@@ -1,7 +1,5 @@
 package com.codemanship.marsrover;
 
-import java.util.Objects;
-
 public class Rover {
     private final int[] position;
     private String facing;
@@ -19,7 +17,7 @@ public class Rover {
         return position;
     }
 
-    public void go(String instructions) {
+    public void execute(String instructions) {
         instructions.chars().forEach((instruction) -> {
             if(instruction == 'R'){
 
