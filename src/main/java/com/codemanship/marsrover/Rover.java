@@ -1,7 +1,6 @@
 package com.codemanship.marsrover;
 
 public class Rover {
-    public static final char RIGHT = 'R';
     private final int[] position;
     private String facing;
 
@@ -20,8 +19,23 @@ public class Rover {
 
     public void execute(String instructions) {
         instructions.chars().forEach((instruction) -> {
-            if(instruction == RIGHT){
-                if (turnRight()) return;
+            if(instruction == 'R'){
+                if(facing.equals( "N")) {
+                    facing = "E";
+                    return;
+                }
+
+                if(facing.equals( "E")) {
+                    facing = "S";
+                    return;
+                }
+
+                if(facing.equals( "S")) {
+                    facing = "W";
+                    return;
+                }
+
+                facing = "N";
             }
 
             if(instruction == 'L') {
@@ -79,26 +93,6 @@ public class Rover {
                 }
             }
         });
-    }
-
-    private boolean turnRight() {
-        if(facing.equals( "N")) {
-            facing = "E";
-            return true;
-        }
-
-        if(facing.equals( "E")) {
-            facing = "S";
-            return true;
-        }
-
-        if(facing.equals( "S")) {
-            facing = "W";
-            return true;
-        }
-
-        facing = "N";
-        return false;
     }
 
 }
