@@ -20,6 +20,9 @@ public class Rover {
     public void execute(String instructions) {
         instructions.chars().forEach((instruction) -> {
             if(instruction == 'R'){
+                String compass = "NESW";
+                int current = compass.indexOf(facing.charAt(0));
+                facing = Character.toString(compass.charAt((current + 1) % 4));
                 if(facing.equals( "N")) {
                     facing = "E";
                     return;
